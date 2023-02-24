@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this template
+-->
+
+<!DOCTYPE notas [
+<!ELEMENT notas ( alumno )* >
+<!ELEMENT alumno ( nombre | apellido | dni | modulos )* >
+<!ELEMENT modulos ( modulo )* >
+<!ELEMENT nombre ( #PCDATA ) >
+<!ELEMENT apellido ( #PCDATA ) >
+<!ELEMENT dni ( #PCDATA ) >
+<!ELEMENT modulo ( #PCDATA ) >
+<!ATTLIST modulo tipo CDATA #REQUIRED >
+] >
+
+<notas>
+    <alumno>
+        <nombre>Alejandro</nombre>
+        <apellido>Alvarez Merida</apellido>
+        <dni>45435345</dni>
+        <modulos>
+            <modulo tipo="Programacion">9</modulo>
+            <modulo tipo="Base de datos">8</modulo>
+        </modulos>
+    </alumno>
+    <alumno>
+        <nombre>Monica</nombre>
+        <apellido>Dunst</apellido>
+        <dni>911233</dni>
+        <modulos>
+            <modulo tipo="Fol">10</modulo>
+            <modulo tipo="Entornos">4</modulo>
+            <modulo tipo="Base de datos">7</modulo>
+        </modulos>
+    </alumno>
+</notas>
