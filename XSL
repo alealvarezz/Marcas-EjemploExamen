@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : ejercicioexamen.xsl
+    Created on : 20 de febrero de 2023, 13:18
+    Author     : AlejandroÁlvarezMéri
+    Description:
+        Purpose of transformation follows.
+-->
+
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+    <xsl:output method="html"/>
+    <xsl:strip-space elements="*"/>
+
+    <!-- TODO customize transformation rules 
+         syntax recommendation http://www.w3.org/TR/xslt 
+    -->
+    <xsl:template match="/">
+        <html>
+            <head>
+                <title>ejercicioexamen.xsl</title>
+                <style>
+                    table{
+                    border-collapse: collapse;
+                    border: solid;
+                    }
+                    table tr th{
+                    background-color: #B8DEFC;
+                    color: black;
+                    padding: 1em;
+                    border: solid;
+                    border-color: #74AEDC;
+                    }
+                    table tr td{
+                    padding: 1em;
+                    border: solid;
+                    border-color: #74AEDC;
+                    }
+                    body{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    }
+                    h1{
+                    margin: 2cm;
+                    }
+                    p{
+                    text-align: center;
+                    }
+                </style>
+            </head>
+            <body>
+                <h1>Listado de alumnos</h1>
+                <xsl:for-each select="notas/alumno">
+                    <h2>
+                        <xsl:value-of select="nombre"/>
+                        <xsl:value-of select="apellido"/>
+                    </h2>
+                    <h3>
+                        <xsl:value-of select="dni"/>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>Modulo</th>
+                            <th>Nota</th>
+                        </tr>
+                        <xsl:for-each select="modulos/modulo">
+                            <tr>
+                                <td><xsl:value-of select="@tipo"/></td>
+                                <td><xsl:value-of select="."/></td>
+                            </tr>
+                        </xsl:for-each>
+                        <tr>
+                            <td>Nota Media</td>
+                            <td><xsl:value-of select="sum(modulos/modulo) div count(modulos/modulo)"/></td>
+                        </tr>
+                    </table>
+                </xsl:for-each>
+            </body>
+        </html>
+    </xsl:template>
+</xsl:stylesheet>
